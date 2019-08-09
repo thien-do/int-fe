@@ -9,11 +9,11 @@ compromise between several concerns/aspects)
     - Hosting: GitHub (Personal best)
     - Convention: Conventional Commits
 
-- Programming language: TypeScript (Best compromise)
+- Programming language: TypeScript (Best compromise, best dev exp)
     - Not Scala.js: interop cost too high, dev exp too low
     - Not Reason: syntax quite weird, interop cost too high, React-driven
     - Not Dart: too immature, Angular-driven
-    - Not JavaScript: too, well, unnecessarily dangerous
+    - Not JavaScript: too, well, unnecessarily dangerous and not good dev exp
 
 - UI framework: React (Good design, good tools, also want to try Hooks)
     - Not Angular: too complex for this project
@@ -27,3 +27,5 @@ compromise between several concerns/aspects)
         sharing, etc.)
     - Not pre-compiled HTML (e.g. Gatsby): same as above
     - Not manual setup: too unnecessarily complicated at this stage
+
+- (Mock) Back end: JSON Server
