@@ -1,15 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from "@blueprintjs/core";
+import styles from "./App.module.scss";
 
-import './App.css';
-
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <Button intent="success" text="button content" onClick={() => { alert("Hi"); }} />
-    </div>
-  );
-}
+const App = () => (
+  <div className={styles.test}>
+    Hello
+  </div>
+);
 
 export default App;

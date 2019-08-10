@@ -19,3 +19,9 @@
 - `alt` anduin.design: only for scala.js
 - `alt` CSS-based (e.g. Bootstrap, Foundation): too risky, poor dev exp
 - `alt` Ant Design, IBM's Carbon: too generic
+
+**Styling: CSS Modules + Sass**
+
+- `why` CSS Modules to scope style definitions
+- `why` Sass to use Blueprint's CSS variables (and it's the only use case)
+- `alt` Utility CSS (e.g. Tailwind, Taychons): cannot use Blueprint's variables
