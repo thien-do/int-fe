@@ -25,3 +25,11 @@
 - `why` CSS Modules to scope style definitions
 - `why` Sass to use Blueprint's CSS variables (and it's the only use case)
 - `alt` Utility CSS (e.g. Tailwind, Taychons): cannot use Blueprint's variables
+
+**Principles**
+
+- Internal vs external styling
+
+**Questions**
+
+- Naming files
