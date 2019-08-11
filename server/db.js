@@ -1,28 +1,29 @@
 const faker = require("faker");
 
-// Create 10 groups
+const groupsCount = 100;
+const usersCount = 10000;
+
 // https://blueprintjs.com/docs/#core/colors
-const groups = [
-  { "id": 0, "name": "Grocery", "color": "vermilion" },
-  { "id": 1, "name": "Home", "color": "rose" },
-  { "id": 2, "name": "Electronics", "color": "violet" },
-  { "id": 3, "name": "Kids", "color": "indigo" },
-  { "id": 4, "name": "Games", "color": "cobalt" },
-  { "id": 5, "name": "Beauty", "color": "turquoise" },
-  { "id": 6, "name": "Jewelery", "color": "forest" },
-  { "id": 7, "name": "Industrial", "color": "lime" },
-  { "id": 8, "name": "Tools", "color": "gold" },
-  { "id": 9, "name": "Clothing", "color": "sepia" },
+const groupColors = [
+  "vermilion", "rose", "violet", "indigo", "cobalt",
+  "turquoise", "forest", "lime", "gold", "sepia",
 ];
 
-groups.forEach((group) => {
-  group.description = faker.lorem.sentences();
-});
+// Create groups
+const groups = Array.from(
+  { length: groupsCount },
+  (value, index) => ({
+    id: index,
+    name: faker.commerce.productName(),
+    color: faker.helpers.randomize(groupColors),
+    description: faker.lorem.sentences(),
+  })
+);
 
-// Create 1000 users
+// Create users
 const users = Array
   // We are going to use only a subset of this
-  .from({ length: 1000 }, () => faker.helpers.contextualCard())
+  .from({ length: usersCount }, () => faker.helpers.contextualCard())
   .map((user, index) => ({
     id: index,
     groupId: faker.random.number({ min: 0, max: groups.length - 1 }),
