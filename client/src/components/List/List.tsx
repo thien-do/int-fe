@@ -59,16 +59,16 @@ function List<T>(props: Props<T>): JSX.Element {
 
   return (
     <div className={styles.main}>
+      <div className={styles.search}>
+        <Search
+          busy={busy} query={query}
+          setQuery={(v) => { setQuery(v); setCurrPage(1); }}
+        />
+      </div>
       <div className={styles.body}>
-        <div className={styles.search}>
-          <Search
-            busy={busy} query={query}
-            setQuery={(v) => { setQuery(v); setCurrPage(1); }}
-          />
-        </div>
         {busy ? renderBusy(props.busyItemElement) : renderList(items, props)}
       </div>
-      <div className={styles.footer}>
+      <div className={styles.pagination}>
         <Pagination
           busy={busy} last={lastPage}
           curr={currPage} setCurr={setCurrPage}

@@ -1,27 +1,47 @@
 @import "~@blueprintjs/core/lib/scss/variables";
 
 .main {
-    display: flex;
-    // supposed this is the top-level container
-    height: 100vh;
+  display: flex;
+  // supposed this is the top-level container
+  height: 100vh;
 }
 
-.panel {
-    flex: 1 1 0px;
-    height: 100%;
-    overflow-y: auto;
+.panel1,
+.panel2,
+.panel3 {
+  flex: 1 1 0px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.panel1 {
+  border-right: solid 1px $pt-divider-black;
+  background: white;
+
+  display: flex; flex-direction: column;
+}
+
+.all {
+  flex: 0 0 auto;
+  padding: $pt-grid-size;
+}
+
+.groupListText {
+  border-top: solid 1px $pt-divider-black;
+  padding-top: $pt-grid-size;
+  text-align: center;
 }
 
 .groupList {
-    border-right: solid 1px $pt-divider-black;
-    background: white;
+  flex: 1 1 0px;
+  overflow: hidden;
 }
 
 .groupDetail {
-    flex: 1 1 0px; height: 100%; overflow-y: auto;
+  flex: 1 1 0px; height: 100%; overflow-y: auto;
 }
 
 .userDetail {
-    border-left: solid 1px $pt-divider-black;
-    background: white;
+  border-left: solid 1px $pt-divider-black;
+  background: white;
 }

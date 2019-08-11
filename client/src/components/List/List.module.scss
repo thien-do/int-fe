@@ -3,21 +3,23 @@
 .main {
   height: 100%;
   display: flex; flex-direction: column;
+  padding: $pt-grid-size;
+}
+
+.search {
+  flex: 0 0 auto;
 }
 
 .body {
   flex: 1 1 0px;
   overflow: auto;
-  padding: $pt-grid-size;
+  padding: $pt-grid-size 0;
 }
 
-.search {
-  margin-bottom: $pt-grid-size;
-}
-
-.footer {
+.pagination {
   flex: 0 0 auto;
   border-top: solid 1px $pt-divider-black;
+  padding-top: $pt-grid-size;
 }
 
 .item {
