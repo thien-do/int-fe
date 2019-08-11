@@ -13,6 +13,7 @@
 .body {
   flex: 1 1 0px;
   overflow: auto;
+  padding: $pt-grid-size;
 }
 
 .footer {
@@ -21,6 +22,5 @@
 }
 
 .item {
-  padding-bottom: $pt-grid-size;
-  padding-top: $pt-grid-size;
+  margin-bottom: $pt-grid-size;
 }

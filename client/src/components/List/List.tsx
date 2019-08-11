@@ -5,13 +5,37 @@ import styles from "./List.module.scss";
 import Pagination from "./Pagination/Pagination";
 import Search from "./Search/Search";
 
+const defaultLimit = 20;
+
 interface Props<T> {
   requestPath: string;
-  renderItem: (item: T) => JSX.Element;
-  getItemKey: (item: T) => string;
+
+  getItemKey: (t: T) => string;
+  renderItem: (t: T) => JSX.Element;
+  busyItemElement: JSX.Element;
 }
 
-function List<T>(props: Props<T>) {
+const renderBusy = (elm: JSX.Element): JSX.Element => (
+  <div className={styles.body}>
+    {Array(defaultLimit).fill(0).map((v, index) => (
+      <div className={styles.item} key={index}>{elm}</div>
+    ))}
+  </div>
+);
+
+function renderList<T>(items: T[], props: Props<T>): JSX.Element {
+  return (
+    <div className={styles.body}>
+      {items.map((item) => (
+        <div className={styles.item} key={props.getItemKey(item)}>
+          {props.renderItem(item)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function List<T>(props: Props<T>): JSX.Element {
   const [busy, setBusy] = useState(false);
   const [items, setItems] = useState<T[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
@@ -22,7 +46,7 @@ function List<T>(props: Props<T>) {
     setBusy(true);
     request<T[]>({
       path: props.requestPath,
-      page: { current: currPage, limit: 20 },
+      page: { current: currPage, limit: defaultLimit },
       search: { query: query },
     })
       .then((res) => {
@@ -41,13 +65,7 @@ function List<T>(props: Props<T>) {
           setQuery={(v) => { setQuery(v); setCurrPage(1); }}
         />
       </div>
-      <div className={styles.body}>
-        {items.map((item) => (
-          <div className={styles.item} key={props.getItemKey(item)}>
-            {props.renderItem(item)}
-          </div>
-        ))}
-      </div>
+      {busy ? renderBusy(props.busyItemElement) : renderList(items, props)}
       <div className={styles.footer}>
         <Pagination
           busy={busy} last={lastPage}
@@ -56,6 +74,6 @@ function List<T>(props: Props<T>) {
       </div>
     </div>
   );
-};
+}
 
 export default List;
