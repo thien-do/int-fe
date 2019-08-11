@@ -1,11 +1,10 @@
 import React, { FC, useState, useEffect } from "react";
-import { FormGroup, Classes, InputGroup, TextArea, HTMLSelect, Button } from "@blueprintjs/core";
+import { FormGroup, Classes, InputGroup, Button } from "@blueprintjs/core";
 
 import * as User from "interfaces/User";
 import request from "utils/api/request";
 
 import styles from "./UserDetail.module.scss";
-import getColorValue from "utils/group/getColorValue";
 
 interface Props {
   id: User.Selection;
@@ -32,7 +31,7 @@ const UserDetail: FC<Props> = (props) => {
     if (props.id !== "new") {
       setBusy(true);
       request<User.Model>({
-        path: `groups/${props.id}`,
+        path: `users/${props.id}`,
       })
         .then((res) => {
           setBusy(false);

@@ -6,11 +6,16 @@ import * as User from "interfaces/User";
 import styles from "./App.module.scss";
 import Panel1 from "./Panel1";
 import Panel2 from "./Panel2";
+import Panel3 from "./Panel3";
 
 const App = () => {
 
-  const [group, setGroup] = useState<Group.Selection>("all")
+  const [group, setGroupOrg] = useState<Group.Selection>("all")
   const [user, setUser] = useState<User.Selection>(null)
+
+  const setGroup = (g: Group.Selection): void => {
+    setGroupOrg(g); setUser(null);
+  };
 
   return (
     <div className={styles.main}>
@@ -21,7 +26,7 @@ const App = () => {
         <Panel2 group={group} user={user} setUser={setUser} />
       </div>
       <div className={styles.panel3}>
-        {user && user.toString()}
+        <Panel3 user={user} />
       </div>
     </div>
   );

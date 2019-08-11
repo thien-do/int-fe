@@ -1,0 +1,7 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.main {
+  height: 100%;
+  overflow: auto;
+  padding: $pt-grid-size;
+}

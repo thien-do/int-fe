@@ -38,8 +38,8 @@ const Header: FC<TabProps> = ({ tab, setTab, group, user, setUser }) => (
     )}
     <div className={styles.headerNew}>
       <Button
-        fill active={user === "new"} icon="new-person"
-        text="Create user" onClick={() => { setUser("new"); }}
+        fill active={user === "new"} icon="new-person" text="Create user"
+        onClick={() => { setUser(user === "new" ? null : "new"); }}
       />
     </div>
   </div>
