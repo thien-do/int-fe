@@ -5,7 +5,6 @@ import GroupList from "components/GroupList/GroupList";
 import * as Group from "interfaces/Group";
 
 import styles from "./Panel1.module.scss";
-import Divider from "./Divider/Divider";
 
 interface Props {
   group: Group.Selection;
@@ -26,7 +25,6 @@ const Panel1: FC<Props> = ({ group, setGroup }) => (
         />
       </ButtonGroup>
     </div>
-    <Divider>or select a group to view detail:</Divider>
     <div className={styles.body}>
       <GroupList group={group} setGroup={setGroup} />
     </div>

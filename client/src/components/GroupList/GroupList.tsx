@@ -23,7 +23,7 @@ const getRenderGroup = (props: Props) => (group: Group.Model) => (
 );
 
 const emptyGroup: Group.Model = {
-  id: 0, name: "Sample name", color: "",
+  id: 0, name: "Sample name", color: "cobalt",
   icon: "cube", description: "Sample description",
 };
 

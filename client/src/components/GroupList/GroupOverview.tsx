@@ -12,6 +12,7 @@ interface Props {
   setActive?: () => void;
 }
 
+// @TODO: use blueprint map directly
 const colorMap: { [index: string]: string } = {
   "vermilion": Colors.VERMILION3,
   "rose": Colors.ROSE3,
