@@ -1,0 +1,30 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.name {
+  font-size: $pt-font-size-large;
+}
+
+.color {
+  display: flex;
+}
+
+.colorSelect {
+  flex: 1 1 0px;
+  margin-left: $pt-grid-size;
+}
+
+.colorPreview {
+  flex: 0 0 auto;
+  width: $pt-button-height;
+  height: $pt-button-height;
+  border-radius: $pt-border-radius;
+}
+
+.footer {
+  margin-top: $pt-grid-size * 3;
+  display: flex;
+}
+
+.footer > *:not(:last-child) {
+  margin-right: $pt-grid-size;
+}

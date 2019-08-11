@@ -20,18 +20,28 @@ interface TabProps extends Props {
   setTab: (s: string) => void;
 }
 
-const Header: FC<TabProps> = ({ tab, setTab }) => (
+const Header: FC<TabProps> = ({ tab, setTab, group, user, setUser }) => (
   <div className={styles.header}>
-    <ButtonGroup fill>
+    {typeof group === "number" && (
+      <div className={styles.headerTabs}>
+        <ButtonGroup fill>
+          <Button
+            fill active={tab === "info"} icon="info-sign"
+            text="Info" onClick={() => { setTab("info"); }}
+          />
+          <Button
+            fill active={tab === "users"} icon="people"
+            text="Users" onClick={() => { setTab("users"); }}
+          />
+        </ButtonGroup>
+      </div>
+    )}
+    <div className={styles.headerNew}>
       <Button
-        fill active={tab === "info"} icon="info-sign"
-        text="Group info" onClick={() => { setTab("info"); }}
+        fill active={user === "new"} icon="new-person"
+        text="Create user" onClick={() => { setUser("new"); }}
       />
-      <Button
-        fill active={tab === "users"} icon="people"
-        text="Group users" onClick={() => { setTab("users"); }}
-      />
-    </ButtonGroup>
+    </div>
   </div>
 );
 
@@ -57,7 +67,7 @@ const Panel2: FC<Props> = (props) => {
 
   return (
     <div className={styles.main}>
-      {typeof props.group === "number" && (
+      {props.group !== "new" && (
         <Header {...props} tab={tab} setTab={setTab} />
       )}
       <div className={styles.body}>
