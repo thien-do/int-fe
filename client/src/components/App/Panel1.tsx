@@ -1,13 +1,11 @@
 import React, { FC } from "react";
 import { Button, ButtonGroup } from "@blueprintjs/core";
 
-import GroupList, { Group } from "components/GroupList/GroupList";
+import GroupList from "components/GroupList/GroupList";
 
+import { GroupSelection } from "./App";
 import styles from "./Panel1.module.scss";
 import Divider from "./Divider/Divider";
-
-// @TODO: Support "none"
-export type GroupSelection = Group["id"] | "all" | "new";
 
 interface Props {
   group: GroupSelection;

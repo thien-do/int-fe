@@ -7,11 +7,12 @@ import ListSearch from "./Search/Search";
 import ListBody, { defaultLimit } from "./ListBody";
 
 interface Props<T> {
-  requestPath: string;
-
   getItemKey: (t: T) => string;
   renderItem: (t: T) => JSX.Element;
   busyItemElement: JSX.Element;
+
+  reqPath: string;
+  resToItems: (r: any) => T[];
 
   searchPlaceholder: string;
 }
@@ -23,10 +24,12 @@ function List<T>(props: Props<T>): JSX.Element {
   const [lastPage, setLastPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
 
+  const { reqPath, resToItems } = props;
+
   useEffect(() => {
     setBusy(true);
-    request<T[]>({
-      path: props.requestPath,
+    request<any>({
+      path: reqPath,
       page: { current: currPage, limit: defaultLimit },
       search: { query: query },
     })
@@ -34,9 +37,9 @@ function List<T>(props: Props<T>): JSX.Element {
         setCurrPage(currPage);
         setBusy(false);
         setLastPage(res.page ? res.page.last : 1);
-        setItems(res.body);
+        setItems(resToItems(res.body));
       });
-  }, [currPage, props.requestPath, query]);
+  }, [currPage, reqPath, query, resToItems]);
 
   return (
     <div className={styles.main}>

@@ -34,13 +34,16 @@ const users = Array
   }));
 
 // Create many-to-many relationship
-const links = Array.from(
-  { length: usersCount * Math.round(groupsCount / 3) },
-  (value, index) => ({
-    id: index,
-    groupId: faker.random.number({ min: 0, max: groupsCount }),
-    userId: faker.random.number({ min: 0, max: usersCount }),
-  })
-);
+const links = [];
+const linksLen = usersCount * Math.round(groupsCount / 3);
+for (let i = 0; i < linksLen; i++) {
+  const groupId = faker.random.number({ min: 0, max: groupsCount });
+  const userId = faker.random.number({ min: 0, max: usersCount });
+  // this is used to de-duplicate links easier
+  const id2 = `${groupId}-${userId}`;
+  if (!links.find((value) => (value.id2 === id2))) {
+    links.push({ id: i, groupId, userId, id2 });
+  }
+}
 
 module.exports = () => ({ groups, users, links });

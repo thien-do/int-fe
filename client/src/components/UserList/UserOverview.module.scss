@@ -1,0 +1,38 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@blueprintjs/core/src/components/button/_common.scss";
+
+.main {
+  padding: $pt-grid-size;
+  display: flex;
+  align-items: center;
+
+  border-radius: $pt-border-radius;
+  cursor: pointer;
+  transition: background $pt-transition-duration $pt-transition-ease;
+  user-select: none;
+}
+
+.main:hover {
+  background: $minimal-button-background-color-hover;
+}
+
+.main:active,
+.mainActive {
+  background: $minimal-button-background-color-active;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  border-radius: 100%;
+}
+
+.info {
+  flex: 1 1 0px;
+  overflow: hidden;
+  margin-left: $pt-grid-size;
+  color: $pt-text-color-muted;
+}
+
+.name {
+  color: $pt-text-color;
+}

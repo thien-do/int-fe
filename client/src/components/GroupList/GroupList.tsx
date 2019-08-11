@@ -4,7 +4,6 @@ import { IconName } from "@blueprintjs/core";
 import List from "components/List/List";
 
 import GroupOverview from "./GroupOverview"
-import styles from "./GroupList.module.scss";
 import { GroupSelection } from "components/App/App";
 
 export interface Group {
@@ -41,18 +40,19 @@ const busyGroup: JSX.Element = (
   <GroupOverview busy={true} group={emptyGroup} />
 );
 
-const Groups: FC<Props> = (props) => (
-  <div className={styles.main}>
-    <List
-      requestPath="groups"
-      // ===
-      getItemKey={getGroupKey}
-      renderItem={getRenderGroup(props)}
-      busyItemElement={busyGroup}
-      // ===
-      searchPlaceholder="Search groups…"
-    />
-  </div>
+const resToGroups = (res: any): Group[] => res;
+
+const GroupList: FC<Props> = (props) => (
+  <List
+    reqPath="groups"
+    resToItems={resToGroups}
+    // ===
+    getItemKey={getGroupKey}
+    renderItem={getRenderGroup(props)}
+    busyItemElement={busyGroup}
+    // ===
+    searchPlaceholder="Search groups…"
+  />
 );
 
-export default Groups;
+export default GroupList;

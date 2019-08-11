@@ -30,7 +30,8 @@ interface Response<T> {
 }
 
 async function request<T>(request: Request): Promise<Response<T>> {
-  const url = `${host}/${request.path}?${stringify(request)}`;
+  const char = request.path.includes("?") ? "&" : "?";
+  const url = `${host}/${request.path}${char}${stringify(request)}`;
   const res = await fetch(url);
   const json = await res.json();
   return { body: json, ...parse(request, res.headers) };
