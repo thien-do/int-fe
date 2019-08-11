@@ -17,25 +17,9 @@
 .panel1 {
   border-right: solid 1px $pt-divider-black;
   background: white;
-
-  display: flex; flex-direction: column;
 }
 
-.box {
-  flex: 0 0 auto;
-  padding: $pt-grid-size;
-}
-
-.groupList {
-  flex: 1 1 0px;
-  overflow: hidden;
-}
-
-.groupDetail {
-  flex: 1 1 0px; height: 100%; overflow-y: auto;
-}
-
-.userDetail {
+.panel3 {
   border-left: solid 1px $pt-divider-black;
   background: white;
 }

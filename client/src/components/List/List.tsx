@@ -3,9 +3,8 @@ import request from "utils/api/request";
 
 import styles from "./List.module.scss";
 import Pagination from "./Pagination/Pagination";
-import Search from "./Search/Search";
-
-const defaultLimit = 20;
+import ListSearch from "./Search/Search";
+import ListBody, { defaultLimit } from "./ListBody";
 
 interface Props<T> {
   requestPath: string;
@@ -15,26 +14,6 @@ interface Props<T> {
   busyItemElement: JSX.Element;
 
   searchPlaceholder: string;
-}
-
-const renderBusy = (elm: JSX.Element): JSX.Element => (
-  <div>
-    {Array(defaultLimit).fill(0).map((v, index) => (
-      <div className={styles.item} key={index}>{elm}</div>
-    ))}
-  </div>
-);
-
-function renderList<T>(items: T[], props: Props<T>): JSX.Element {
-  return (
-    <div>
-      {items.map((item) => (
-        <div className={styles.item} key={props.getItemKey(item)}>
-          {props.renderItem(item)}
-        </div>
-      ))}
-    </div>
-  );
 }
 
 function List<T>(props: Props<T>): JSX.Element {
@@ -62,13 +41,17 @@ function List<T>(props: Props<T>): JSX.Element {
   return (
     <div className={styles.main}>
       <div className={styles.search}>
-        <Search
+        <ListSearch
           busy={busy} query={query} placeholder={props.searchPlaceholder}
           setQuery={(v) => { setQuery(v); setCurrPage(1); }}
         />
       </div>
       <div className={styles.body}>
-        {busy ? renderBusy(props.busyItemElement) : renderList(items, props)}
+        <ListBody
+          busy={busy} items={items} search={!!query}
+          getItemKey={props.getItemKey} renderItem={props.renderItem}
+          busyItemElement={props.busyItemElement}
+        />
       </div>
       <div className={styles.pagination}>
         <Pagination

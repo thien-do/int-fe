@@ -1,0 +1,16 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.main {
+  display: flex; flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  flex: 0 0 auto;
+  padding: $pt-grid-size;
+}
+
+.body {
+  flex: 1 1 0px;
+  overflow: hidden;
+}
