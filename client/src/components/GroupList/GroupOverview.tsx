@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import { Text, Icon, Colors, Classes } from "@blueprintjs/core";
+import { Text, Icon, Classes } from "@blueprintjs/core";
 
 import * as Group from "interfaces/Group";
+import getColorValue from "utils/group/getColorValue";
 
 import styles from "./GroupOverview.module.scss";
 
@@ -11,20 +12,6 @@ interface Props {
   active?: boolean;
   setActive?: () => void;
 }
-
-// @TODO: use blueprint map directly
-const colorMap: { [index: string]: string } = {
-  "vermilion": Colors.VERMILION3,
-  "rose": Colors.ROSE3,
-  "violet": Colors.VIOLET3,
-  "indigo": Colors.INDIGO3,
-  "cobalt": Colors.COBALT3,
-  "turquoise": Colors.TURQUOISE3,
-  "forest": Colors.FOREST3,
-  "lime": Colors.LIME3,
-  "gold": Colors.GOLD3,
-  "sepia": Colors.SEPIA3,
-};
 
 const GroupOverview: FC<Props> = ({
   active = false,
@@ -42,7 +29,7 @@ const GroupOverview: FC<Props> = ({
       onClick={setActive}
     >
       <div className={withSkeleton(styles.icon)}>
-        <Icon color={colorMap[group.color]} icon={group.icon} />
+        <Icon color={getColorValue(group.color)} icon="folder-close" />
       </div>
       <div className={styles.body}>
         <Text className={withSkeleton(styles.name)}>{group.name}</Text>

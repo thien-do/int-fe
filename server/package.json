@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@blueprintjs/icons": "^3.10.0",
     "faker": "^4.1.0"
   },
   "devDependencies": {

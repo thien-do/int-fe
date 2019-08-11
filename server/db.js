@@ -1,5 +1,4 @@
 const faker = require("faker");
-const icons = require("@blueprintjs/icons/resources/icons/icons.json");
 
 const groupsCount = 55;
 const usersCount = 505;
@@ -16,7 +15,6 @@ const groups = Array.from(
   (value, index) => ({
     id: index,
     name: faker.commerce.productName(),
-    icon: faker.helpers.randomize(icons).iconName,
     color: faker.helpers.randomize(groupColors),
     description: faker.lorem.sentences(),
   })

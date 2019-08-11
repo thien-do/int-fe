@@ -40,7 +40,7 @@ const TabUsers: FC<TabProps> = ({ group, user, setUser }) => (
 );
 
 const TabInfo: FC<TabProps> = ({ group }) => (
-  <GroupDetail id={group} />
+  <div className={styles.info}><GroupDetail id={group} /></div>
 );
 
 const Body: FC<TabProps> = (props) => {
@@ -53,14 +53,19 @@ const Body: FC<TabProps> = (props) => {
 };
 
 const Panel2: FC<Props> = (props) => {
-  const [tab, setTab] = useState("users");
+  const [tab, setTab] = useState("info");
 
   return (
     <div className={styles.main}>
       {typeof props.group === "number" && (
         <Header {...props} tab={tab} setTab={setTab} />
       )}
-      <Body {...props} tab={tab} setTab={setTab} />
+      <div className={styles.body}>
+        <Body
+          key={props.group}
+          {...props} tab={tab} setTab={setTab}
+        />
+      </div>
     </div>
   );
 };
