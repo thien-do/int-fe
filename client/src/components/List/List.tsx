@@ -13,6 +13,8 @@ interface Props<T> {
   getItemKey: (t: T) => string;
   renderItem: (t: T) => JSX.Element;
   busyItemElement: JSX.Element;
+
+  searchPlaceholder: string;
 }
 
 const renderBusy = (elm: JSX.Element): JSX.Element => (
@@ -61,7 +63,7 @@ function List<T>(props: Props<T>): JSX.Element {
     <div className={styles.main}>
       <div className={styles.search}>
         <Search
-          busy={busy} query={query}
+          busy={busy} query={query} placeholder={props.searchPlaceholder}
           setQuery={(v) => { setQuery(v); setCurrPage(1); }}
         />
       </div>

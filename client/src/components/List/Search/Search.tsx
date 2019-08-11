@@ -4,6 +4,7 @@ import { Button, ControlGroup, InputGroup } from "@blueprintjs/core"
 import styles from "./Search.module.scss";
 
 interface Props {
+  placeholder: string;
   busy: boolean;
   query: string;
   setQuery: (s: string) => void;
@@ -24,7 +25,7 @@ const Search: FC<Props> = (props) => {
       <fieldset disabled={props.busy}>
         <ControlGroup>
           <InputGroup
-            fill value={query}
+            fill value={query} placeholder={props.placeholder}
             onChange={(e: Event) => { setQuery(e.currentTarget.value); }}
           />
           <Button icon="search" type="submit" />

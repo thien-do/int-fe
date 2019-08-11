@@ -44,9 +44,12 @@ const Groups: FC<Props> = (props) => (
   <div className={styles.main}>
     <List
       requestPath="groups"
+      // ===
       getItemKey={getGroupKey}
       renderItem={getRenderGroup(props)}
       busyItemElement={busyGroup}
+      // ===
+      searchPlaceholder="Search groups…"
     />
   </div>
 );

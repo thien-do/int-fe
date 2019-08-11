@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Button } from "@blueprintjs/core";
+
+import GroupList, { Group } from "components/GroupList/GroupList";
 
 import styles from "./App.module.scss";
-import GroupList, { Group } from "components/GroupList/GroupList";
-import { Button, Text } from "@blueprintjs/core";
+import Divider from "./Divider/Divider";
 
 const App = () => {
   const [group, setGroup] = useState<Group["id"] | null>(null)
@@ -16,9 +18,7 @@ const App = () => {
             onClick={() => { setGroup(null); }}
           />
         </div>
-        <div className={styles.groupListText}>
-          <Text>or select a group to view detail:</Text>
-        </div>
+        <Divider>or select a group to view detail:</Divider>
         <div className={styles.groupList}>
           <GroupList group={group} setGroup={setGroup} />
         </div>
