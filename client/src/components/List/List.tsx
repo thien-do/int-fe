@@ -16,7 +16,7 @@ interface Props<T> {
 }
 
 const renderBusy = (elm: JSX.Element): JSX.Element => (
-  <div className={styles.body}>
+  <div>
     {Array(defaultLimit).fill(0).map((v, index) => (
       <div className={styles.item} key={index}>{elm}</div>
     ))}
@@ -25,7 +25,7 @@ const renderBusy = (elm: JSX.Element): JSX.Element => (
 
 function renderList<T>(items: T[], props: Props<T>): JSX.Element {
   return (
-    <div className={styles.body}>
+    <div>
       {items.map((item) => (
         <div className={styles.item} key={props.getItemKey(item)}>
           {props.renderItem(item)}
@@ -59,13 +59,15 @@ function List<T>(props: Props<T>): JSX.Element {
 
   return (
     <div className={styles.main}>
-      <div className={styles.header}>
-        <Search
-          busy={busy} query={query}
-          setQuery={(v) => { setQuery(v); setCurrPage(1); }}
-        />
+      <div className={styles.body}>
+        <div className={styles.search}>
+          <Search
+            busy={busy} query={query}
+            setQuery={(v) => { setQuery(v); setCurrPage(1); }}
+          />
+        </div>
+        {busy ? renderBusy(props.busyItemElement) : renderList(items, props)}
       </div>
-      {busy ? renderBusy(props.busyItemElement) : renderList(items, props)}
       <div className={styles.footer}>
         <Pagination
           busy={busy} last={lastPage}

@@ -5,15 +5,14 @@
   display: flex; flex-direction: column;
 }
 
-.header {
-  flex: 0 0 auto;
-  border-bottom: solid 1px $pt-divider-black;
-}
-
 .body {
   flex: 1 1 0px;
   overflow: auto;
   padding: $pt-grid-size;
+}
+
+.search {
+  margin-bottom: $pt-grid-size;
 }
 
 .footer {

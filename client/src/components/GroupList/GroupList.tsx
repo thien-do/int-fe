@@ -4,7 +4,7 @@ import { IconName } from "@blueprintjs/core";
 import List from "components/List/List";
 
 import GroupOverview from "./GroupOverview"
-import styles from "./Groups.module.scss";
+import styles from "./GroupList.module.scss";
 
 export interface Group {
   id: number;

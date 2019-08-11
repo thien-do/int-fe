@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Text, Icon, Colors, Classes } from "@blueprintjs/core";
 
 import styles from "./GroupOverview.module.scss";
-import { Group } from "./Groups";
+import { Group } from "./GroupList";
 
 interface Props {
   busy: boolean;

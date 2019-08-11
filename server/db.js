@@ -1,8 +1,8 @@
 const faker = require("faker");
 const icons = require("@blueprintjs/icons/resources/icons/icons.json");
 
-const groupsCount = 105;
-const usersCount = 10005;
+const groupsCount = 55;
+const usersCount = 505;
 
 // https://blueprintjs.com/docs/#core/colors
 const groupColors = [
@@ -28,10 +28,19 @@ const users = Array
   .from({ length: usersCount }, () => faker.helpers.contextualCard())
   .map((user, index) => ({
     id: index,
-    groupId: faker.random.number({ min: 0, max: groups.length - 1 }),
     name: user.name,
     email: user.email,
     avatar: user.avatar,
   }));
 
-module.exports = () => ({ groups, users });
+// Create many-to-many relationship
+const links = Array.from(
+  { length: usersCount * Math.round(groupsCount / 3) },
+  (value, index) => ({
+    id: index,
+    groupId: faker.random.number({ min: 0, max: groupsCount }),
+    userId: faker.random.number({ min: 0, max: usersCount }),
+  })
+);
+
+module.exports = () => ({ groups, users, links });

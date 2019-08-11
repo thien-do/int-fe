@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./App.module.scss";
-import Groups, { Group } from "components/Groups/Groups";
+import Groups, { Group } from "components/GroupList/GroupList";
 
 const App = () => {
   const [group, setGroup] = useState<Group["id"] | null>(null)
