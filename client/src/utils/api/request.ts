@@ -11,12 +11,12 @@ interface Request {
 }
 
 // @TODO: build queries with https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-const stringify = (req: Request) => ([
+const stringify = (req: Request): string => ([
   req.page ? Page.stringify(req.page) : ""
 ].join("&"));
 
 const parse = (req: Request, headers: Headers) => ({
-  pagination: req.page && Page.parse(req.page, headers)
+  page: req.page && Page.parse(req.page, headers)
 });
 
 interface Response<T> {

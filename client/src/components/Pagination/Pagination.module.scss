@@ -1,0 +1,20 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+.main {
+  padding: $pt-grid-size;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.prev {
+  flex: 0 0 auto;
+}
+
+.go {
+  float: 1 1 0px;
+}
+
+.next {
+  flex: 0 0 auto;
+}

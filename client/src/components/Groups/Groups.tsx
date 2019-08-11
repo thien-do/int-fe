@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@blueprintjs/core";
+import React, { useState, useEffect, FC } from "react";
 import request from "utils/api/request";
 
 import styles from "./Groups.module.scss";
+import GroupOverview, { Group } from "./GroupOverview";
+import Pagination from "components/Pagination/Pagination";
 
-interface Group {
-  id: number;
-  name: string;
-  color: string;
-  description: string;
-}
-
-const Groups = () => {
+const Groups: FC = () => {
   const [busy, setBusy] = useState(false);
   const [groups, setGroups] = useState<Group[]>([]);
-  const [currPage, setCurrPage] = useState(1);
-  const [lastPage, setLastPage] = useState(1);
+  const [currPage, setCurrPage] = useState<number>(1);
+  const [lastPage, setLastPage] = useState<number>(1);
+
+  console.log("Groups", busy, currPage, lastPage, groups);
 
   useEffect(() => {
     setBusy(true);
     request<Group[]>({
-      path: "users",
-      page: { current: currPage, limit: 10 },
+      path: "groups",
+      page: { current: currPage, limit: 20 },
     })
       .then((res) => {
-        setBusy(false);
         setCurrPage(currPage);
+        setBusy(false);
         setLastPage(res.page ? res.page.last : 1);
         setGroups(res.body);
       });
@@ -33,9 +29,22 @@ const Groups = () => {
 
   return (
     <div className={styles.main}>
-      {busy ? "busy" : "not busy"}
-      {groups.map(i => i.id).toString()}
-      <Button onClick={() => setCurrPage(currPage + 1)}>Next</Button>
+      <div className={styles.header}>
+        {busy ? "busy" : "not busy"}
+      </div>
+      <div className={styles.body}>
+        {groups.map((group) => (
+          <div className={styles.item} key={group.id}>
+            <GroupOverview group={group} />
+          </div>
+        ))}
+      </div>
+      <div className={styles.footer}>
+        <Pagination
+          curr={currPage} setCurr={setCurrPage}
+          last={lastPage} busy={busy}
+        />
+      </div> 
     </div>
   );
 };
