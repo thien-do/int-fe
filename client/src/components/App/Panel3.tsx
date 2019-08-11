@@ -5,7 +5,6 @@ import UserDetail from "components/UserDetail/UserDetail";
 import * as User from "interfaces/User";
 
 import styles from "./Panel3.module.scss";
-import { setupMaster } from "cluster";
 
 interface Props {
   user: User.Selection;
