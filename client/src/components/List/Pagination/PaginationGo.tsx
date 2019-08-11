@@ -1,8 +1,6 @@
 import React, { FC, useState } from "react";
 import { Button, ControlGroup, NumericInput, Tag } from "@blueprintjs/core";
 
-// import styles from "./PaginationGo.module.scss";
-
 interface Props {
   busy: boolean;
   last: number;
@@ -22,9 +20,7 @@ const PaginationGo: FC<Props> = (props) => {
   const tag = <Tag minimal>of {props.last}</Tag>;
   const isOk = getIsOk(curr, props.last);
   return (
-    <form
-      onSubmit={e => { e.preventDefault(); props.setCurr(curr); }}
-    >
+    <form onSubmit={e => { e.preventDefault(); props.setCurr(curr); }}>
       <fieldset disabled={props.busy}>
         <ControlGroup>
           <NumericInput
@@ -33,9 +29,7 @@ const PaginationGo: FC<Props> = (props) => {
             buttonPosition="none" size={2} rightElement={tag}
             intent={isOk ? "none" : "danger"}
           />
-          <Button
-            type="submit" text="Go" disabled={!isOk}
-          />
+          <Button type="submit" text="Go" disabled={!isOk} />
         </ControlGroup>
       </fieldset>
     </form>

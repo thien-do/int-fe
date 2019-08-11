@@ -3,6 +3,7 @@ import request from "utils/api/request";
 
 import styles from "./List.module.scss";
 import Pagination from "./Pagination/Pagination";
+import Search from "./Search/Search";
 
 interface Props<T> {
   requestPath: string;
@@ -15,12 +16,14 @@ function List<T>(props: Props<T>) {
   const [items, setItems] = useState<T[]>([]);
   const [currPage, setCurrPage] = useState<number>(1);
   const [lastPage, setLastPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
 
   useEffect(() => {
     setBusy(true);
     request<T[]>({
       path: props.requestPath,
       page: { current: currPage, limit: 20 },
+      search: { query: query },
     })
       .then((res) => {
         setCurrPage(currPage);
@@ -28,12 +31,15 @@ function List<T>(props: Props<T>) {
         setLastPage(res.page ? res.page.last : 1);
         setItems(res.body);
       });
-  }, [currPage, props.requestPath]);
+  }, [currPage, props.requestPath, query]);
 
   return (
     <div className={styles.main}>
       <div className={styles.header}>
-        {busy ? "busy" : "not busy"}
+        <Search
+          busy={busy} query={query}
+          setQuery={(v) => { setQuery(v); setCurrPage(1); }}
+        />
       </div>
       <div className={styles.body}>
         {items.map((item) => (
@@ -44,8 +50,8 @@ function List<T>(props: Props<T>) {
       </div>
       <div className={styles.footer}>
         <Pagination
+          busy={busy} last={lastPage}
           curr={currPage} setCurr={setCurrPage}
-          last={lastPage} busy={busy}
         />
       </div>
     </div>

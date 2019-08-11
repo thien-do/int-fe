@@ -12,6 +12,7 @@ export const stringify = (request: Request): String => (
 );
 
 export const parse = (request: Request, headers: Headers): Response => {
-  const items = parseInt(headers.get("X-Total-Count") || "");
-  return { last: Math.ceil(items / request.limit) };
+  const countStr = headers.get("X-Total-Count")
+  const count = Math.max(parseInt(countStr || ""), 1);
+  return { last: Math.ceil(count / request.limit) };
 };
