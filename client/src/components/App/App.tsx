@@ -1,22 +1,32 @@
 import React, { useState } from "react";
-import { Button } from "@blueprintjs/core";
+import { Button, ButtonGroup } from "@blueprintjs/core";
 
 import GroupList, { Group } from "components/GroupList/GroupList";
 
 import styles from "./App.module.scss";
 import Divider from "./Divider/Divider";
 
+// @TODO: Support "none"
+export type GroupSelection = Group["id"] | "all" | "new";
+
 const App = () => {
-  const [group, setGroup] = useState<Group["id"] | null>(null)
+
+  const [group, setGroup] = useState<GroupSelection>("all")
+
   return (
     <div className={styles.main}>
       <div className={styles.panel1}>
-        <div className={styles.all}>
-          <Button
-            fill active={group === null}
-            text="View all users"
-            onClick={() => { setGroup(null); }}
-          />
+        <div className={styles.box}>
+          <ButtonGroup fill>
+            <Button
+              fill active={group === "all"} text="All groups"
+              onClick={() => { setGroup("all"); }}
+            />
+            <Button
+              fill active={group === "new"} text="Create new group"
+              onClick={() => { setGroup("new"); }}
+            />
+          </ButtonGroup>
         </div>
         <Divider>or select a group to view detail:</Divider>
         <div className={styles.groupList}>

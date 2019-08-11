@@ -5,6 +5,7 @@ import List from "components/List/List";
 
 import GroupOverview from "./GroupOverview"
 import styles from "./GroupList.module.scss";
+import { GroupSelection } from "components/App/App";
 
 export interface Group {
   id: number;
@@ -15,7 +16,7 @@ export interface Group {
 }
 
 interface Props {
-  group: Group["id"] | null;
+  group: GroupSelection;
   setGroup: (i: Group["id"]) => void;
 }
 
