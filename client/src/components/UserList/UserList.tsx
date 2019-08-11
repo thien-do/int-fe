@@ -2,27 +2,22 @@ import React, { FC } from "react";
 
 import List from "components/List/List";
 
-import UserOverview from "./UserOverview"
-import { GroupSelection, UserSelection } from "components/App/App";
+import * as Group from "interfaces/Group";
+import * as User from "interfaces/User";
 
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  avatar: string;
-}
+import UserOverview from "./UserOverview"
 
 interface Props {
-  group: GroupSelection;
-  user: UserSelection;
-  setUser: (i: User["id"]) => void;
+  group: Group.Selection;
+  user: User.Selection;
+  setUser: (i: User.Model["id"]) => void;
 }
 
-const getUserKey = (user: User): string => (
+const getUserKey = (user: User.Model): string => (
   user.id.toString()
 );
 
-const getRenderUser = (props: Props) => (user: User) => (
+const getRenderUser = (props: Props) => (user: User.Model) => (
   <UserOverview
     busy={false} user={user}
     active={props.user === user.id}
@@ -30,7 +25,7 @@ const getRenderUser = (props: Props) => (user: User) => (
   />
 );
 
-const emptyUser: User = {
+const emptyUser: User.Model = {
   id: 0,
   name: "Sample name",
   avatar: "",
@@ -43,7 +38,7 @@ const busyUser: JSX.Element = (
 
 // 1. links?groupId=50&_expand=user
 // 2. users
-const resToUsers = (res: any): User[] => (res
+const resToUsers = (res: any): User.Model[] => (res
   .map((item: any) => item.user ? item.user : item)
 );
 
@@ -66,7 +61,7 @@ const UserList: FC<Props> = (props) => (props.group !== "new"
     // ===
     searchPlaceholder="Search users…"
   />
-  : <div>a</div>
+  : <div></div> // @TODO: There must be better way right
 );
 
 export default UserList;

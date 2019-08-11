@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 
-import { Group } from "components/GroupList/GroupList";
-import { User } from "components/UserList/UserList";
+import * as Group from "interfaces/Group";
+import * as User from "interfaces/User";
 
 import styles from "./App.module.scss";
 import Panel1 from "./Panel1";
 import Panel2 from "./Panel2";
 
-// @TODO: Support "none"
-export type GroupSelection = Group["id"] | "all" | "new";
-export type UserSelection = User["id"] | "new" | null;
-
 const App = () => {
 
-  const [group, setGroup] = useState<GroupSelection>("all")
-  const [user, setUser] = useState<UserSelection>(null)
+  const [group, setGroup] = useState<Group.Selection>("all")
+  const [user, setUser] = useState<User.Selection>(null)
 
   return (
     <div className={styles.main}>

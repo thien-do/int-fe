@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { Text, Classes } from "@blueprintjs/core";
 
+import * as User from "interfaces/User";
+
 import styles from "./UserOverview.module.scss";
-import { User } from "./UserList";
 
 interface Props {
   busy: boolean;
-  user: User;
+  user: User.Model;
   active?: boolean;
   setActive?: () => void;
 }

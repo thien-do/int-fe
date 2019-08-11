@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import { Text, Icon, Colors, Classes } from "@blueprintjs/core";
 
+import * as Group from "interfaces/Group";
+
 import styles from "./GroupOverview.module.scss";
-import { Group } from "./GroupList";
 
 interface Props {
   busy: boolean;
-  group: Group;
+  group: Group.Model;
   active?: boolean;
   setActive?: () => void;
 }

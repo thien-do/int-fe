@@ -2,14 +2,14 @@ import React, { FC } from "react";
 import { Button, ButtonGroup } from "@blueprintjs/core";
 
 import GroupList from "components/GroupList/GroupList";
+import * as Group from "interfaces/Group";
 
-import { GroupSelection } from "./App";
 import styles from "./Panel1.module.scss";
 import Divider from "./Divider/Divider";
 
 interface Props {
-  group: GroupSelection;
-  setGroup: (g: GroupSelection) => void;
+  group: Group.Selection;
+  setGroup: (g: Group.Selection) => void;
 }
 
 const Panel1: FC<Props> = ({ group, setGroup }) => (

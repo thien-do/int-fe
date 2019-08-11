@@ -1,29 +1,20 @@
 import React, { FC } from "react";
 
-import { IconName } from "@blueprintjs/core";
 import List from "components/List/List";
+import * as Group from "interfaces/Group";
 
-import GroupOverview from "./GroupOverview"
-import { GroupSelection } from "components/App/App";
-
-export interface Group {
-  id: number;
-  name: string;
-  color: string;
-  icon: IconName;
-  description: string;
-}
+import GroupOverview from "./GroupOverview";
 
 interface Props {
-  group: GroupSelection;
-  setGroup: (i: Group["id"]) => void;
+  group: Group.Selection;
+  setGroup: (i: Group.Model["id"]) => void;
 }
 
-const getGroupKey = (group: Group): string => (
+const getGroupKey = (group: Group.Model): string => (
   group.id.toString()
 );
 
-const getRenderGroup = (props: Props) => (group: Group) => (
+const getRenderGroup = (props: Props) => (group: Group.Model) => (
   <GroupOverview
     busy={false} group={group}
     active={props.group === group.id}
@@ -31,7 +22,7 @@ const getRenderGroup = (props: Props) => (group: Group) => (
   />
 );
 
-const emptyGroup: Group = {
+const emptyGroup: Group.Model = {
   id: 0, name: "Sample name", color: "",
   icon: "cube", description: "Sample description",
 };
@@ -40,7 +31,7 @@ const busyGroup: JSX.Element = (
   <GroupOverview busy={true} group={emptyGroup} />
 );
 
-const resToGroups = (res: any): Group[] => res;
+const resToGroups = (res: any): Group.Model[] => res;
 
 const GroupList: FC<Props> = (props) => (
   <List
