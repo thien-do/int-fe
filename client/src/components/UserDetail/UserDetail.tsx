@@ -8,6 +8,7 @@ import styles from "./UserDetail.module.scss";
 
 interface Props {
   id: User.Selection;
+  cancel: () => void;
 }
 
 const emptyModel: User.Model = {
@@ -67,7 +68,10 @@ const UserDetail: FC<Props> = (props) => {
 
       <div className={withSkeleton(styles.footer)}>
         {props.id === "new"
-          ? <Button intent="primary" large fill text="Create" onClick={notYet} />
+          ? <>
+            <Button intent="primary" large fill text="Create" onClick={notYet} />
+            <Button large fill text="Cancel" onClick={props.cancel} />
+            </>
           : dirty
             ? <>
               <Button intent="primary" large fill text="Save" onClick={notYet} />

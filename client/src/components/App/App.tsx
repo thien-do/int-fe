@@ -23,10 +23,10 @@ const App = () => {
         <Panel1 group={group} setGroup={setGroup} />
       </div>
       <div className={styles.panel2}>
-        <Panel2 group={group} user={user} setUser={setUser} />
+        <Panel2 group={group} setGroup={setGroup} user={user} setUser={setUser} />
       </div>
       <div className={styles.panel3}>
-        <Panel3 user={user} />
+        <Panel3 user={user} setUser={setUser} />
       </div>
     </div>
   );

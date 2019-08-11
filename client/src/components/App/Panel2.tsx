@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { ButtonGroup, Button } from "@blueprintjs/core";
+import { H4, ButtonGroup, Button } from "@blueprintjs/core";
 
 import UserList from "components/UserList/UserList";
 import GroupDetail from "components/GroupDetail/GroupDetail";
@@ -11,6 +11,7 @@ import styles from "./Panel2.module.scss"
 
 interface Props {
   group: Group.Selection;
+  setGroup: (g: Group.Selection) => void;
   user: User.Selection;
   setUser: (g: User.Selection) => void;
 }
@@ -49,8 +50,10 @@ const TabUsers: FC<TabProps> = ({ group, user, setUser }) => (
   <UserList group={group} user={user} setUser={setUser} />
 );
 
-const TabInfo: FC<TabProps> = ({ group }) => (
-  <div className={styles.info}><GroupDetail id={group} /></div>
+const TabInfo: FC<TabProps> = ({ group, setGroup }) => (
+  <div className={styles.info}>
+    <GroupDetail id={group} cancel={() => { setGroup("all"); }} />
+  </div>
 );
 
 const Body: FC<TabProps> = (props) => {
@@ -67,6 +70,9 @@ const Panel2: FC<Props> = (props) => {
 
   return (
     <div className={styles.main}>
+      <div className={styles.title}>
+        <H4>Group detail</H4>
+      </div>
       {props.group !== "new" && (
         <Header {...props} tab={tab} setTab={setTab} />
       )}

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button, ButtonGroup } from "@blueprintjs/core";
+import { H4, Button, ButtonGroup } from "@blueprintjs/core";
 
 import GroupList from "components/GroupList/GroupList";
 import * as Group from "interfaces/Group";
@@ -13,6 +13,9 @@ interface Props {
 
 const Panel1: FC<Props> = ({ group, setGroup }) => (
   <div className={styles.main}>
+    <div className={styles.title}>
+      <H4>Group list</H4>
+    </div>
     <div className={styles.header}>
       <ButtonGroup fill>
         <Button

@@ -1,7 +1,23 @@
 @import "~@blueprintjs/core/lib/scss/variables";
 
 .main {
+  display: flex; flex-direction: column;
   height: 100%;
-  overflow: auto;
+}
+
+.title {
+  flex: 0 0 auto;
+  text-align: center;
   padding: $pt-grid-size;
+  border-bottom: solid 1px $pt-divider-black;
+}
+
+.title > h4 {
+  margin: 0;
+}
+
+.body {
+  flex: 1 1 0px;
+  padding: $pt-grid-size;
+  overflow: hidden;
 }

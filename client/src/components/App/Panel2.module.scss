@@ -5,9 +5,20 @@
   height: 100%;;
 }
 
+.title {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: $pt-grid-size;
+}
+
+.title > h4 {
+  margin: 0;
+}
+
 .header {
   flex: 0 0 auto;
   padding: $pt-grid-size;
+  padding-top: 0;
   border-bottom: solid 1px $pt-divider-black;
   display: flex;
 }

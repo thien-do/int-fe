@@ -9,6 +9,7 @@ import getColorValue from "utils/group/getColorValue";
 
 interface Props {
   id: Group.Selection;
+  cancel: () => void;
 }
 
 const emptyModel: Group.Model = {
@@ -92,7 +93,10 @@ const GroupDetail: FC<Props> = (props) => {
 
       <div className={withSkeleton(styles.footer)}>
         {props.id === "new"
-          ? <Button intent="primary" large fill text="Create" onClick={notYet} />
+          ? <>
+            <Button intent="primary" large fill text="Create" onClick={notYet} />
+            <Button large fill text="Cancel" onClick={props.cancel} />
+            </>
           : dirty
             ? <>
               <Button intent="primary" large fill text="Save" onClick={notYet} />
