@@ -15,8 +15,8 @@ export interface Group {
 }
 
 interface Props {
-  group: Group | null;
-  setGroup: (g: Group) => void;
+  group: Group["id"] | null;
+  setGroup: (i: Group["id"]) => void;
 }
 
 const getGroupKey = (group: Group): string => (
@@ -25,10 +25,9 @@ const getGroupKey = (group: Group): string => (
 
 const getRenderGroup = (props: Props) => (group: Group) => (
   <GroupOverview
-    busy={false}
-    group={group}
-    active={props.group ? props.group.id === group.id : false}
-    setActive={() => props.setGroup(group)}
+    busy={false} group={group}
+    active={props.group === group.id}
+    setActive={() => props.setGroup(group.id)}
   />
 );
 

@@ -4,7 +4,7 @@ import styles from "./App.module.scss";
 import Groups, { Group } from "components/Groups/Groups";
 
 const App = () => {
-  const [group, setGroup] = useState<Group | null>(null)
+  const [group, setGroup] = useState<Group["id"] | null>(null)
   return (
     <div className={styles.main}>
       <div className={`${styles.panel} ${styles.groupList}`}>
@@ -12,7 +12,7 @@ const App = () => {
       </div>
       <div className={`${styles.panel} ${styles.groupDetail}`}>
         Group detail
-        {group && group.id}
+        {group === null ? "null" : group}
     </div>
       <div className={`${styles.panel} ${styles.userDetail}`}>
         User detail
