@@ -1,7 +1,7 @@
 const faker = require("faker");
 
-const groupsCount = 100;
-const usersCount = 10000;
+const groupsCount = 105;
+const usersCount = 10005;
 
 // https://blueprintjs.com/docs/#core/colors
 const groupColors = [

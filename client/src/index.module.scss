@@ -1,6 +1,11 @@
 @import "~@blueprintjs/core/lib/scss/variables";
 
 body {
-    color: $pt-text-color;
-    background: $pt-app-background-color;
+  color: $pt-text-color;
+  background: $pt-app-background-color;
+}
+
+fieldset {
+  padding: 0;
+  border: none;
 }
