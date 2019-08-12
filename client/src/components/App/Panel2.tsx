@@ -71,7 +71,7 @@ const Panel2: FC<Props> = (props) => {
   return (
     <div className={styles.main}>
       <div className={styles.title}>
-        <H4>Group detail</H4>
+        <H4> {props.group === "all" ? "All users" : "Group detail"} </H4>
       </div>
       {props.group !== "new" && (
         <Header {...props} tab={tab} setTab={setTab} />
