@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "REACT_APP_SERVER": "https://int-be.herokuapp.com"
+    }
+  }
+}
