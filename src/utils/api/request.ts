@@ -1,7 +1,7 @@
 import * as Page from "./page";
 import * as Search from "./search";
 
-const host = "http://localhost:3001";
+const host = process.env.REACT_APP_SERVER;
 
 // This supports https://github.com/typicode/json-server#routes
 interface Request {
