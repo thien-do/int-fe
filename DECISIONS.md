@@ -1,3 +1,26 @@
+## Overview
+
+Due to the nature of the challenge and its time constraint, some features had been skipped and assumptions had been made in order to best showcase my direction on the challenge. To be specific:
+
+- Assumptions:
+    - The front end is a part of an internal admin system, where its targeted users are mainly internal employees.
+    - The number of groups and users are very large, as well as the number of their links.
+- Direction: Our main focuses are:
+    - Browsing/listing experience and quality of interfaces
+    - Workflow and development experience
+    - Foundation for further development
+
+Therefore some features (especially those editting ones) may be missing in this MVP but can be implemented easily after.
+
+## Details
+
+> Legends:
+> 
+> - `why`: why the choice is made
+> - `alt`: considered alternative options
+
+Note that these decisions are not made separately, but instead heavily depend on each other. For example, Create React App is chose because it has great supports for other decisions like TypeScript and CSS Modules.
+
 **Version control: Git**
 
 - `why` De facto solution, easy to share and collaborate
@@ -41,14 +64,7 @@
 - `why` Sass to use Blueprint's CSS variables (and it's the only use case)
 - `alt` Utility CSS (e.g. Tailwind, Taychons): cannot use Blueprint's variables
 
-**Principles**
+**Design: Parent > Detail column-style layout (Finder)**
 
-- Internal vs external styling
-
-**Questions**
-
-- Naming files
-
-**Layout: 3 columns, finder style**
-
-https://www.nngroup.com/articles/item-list-view-all/
+- Pagination: https://www.nngroup.com/articles/item-list-view-all/
+- Search is a must, should also have filter, order and group
